@@ -1,0 +1,27 @@
+{# @var ea \EasyCorp\Bundle\EasyAdminBundle\Context\AdminContext #}
+{# @var entity \EasyCorp\Bundle\EasyAdminBundle\Dto\EntityDto #}
+{% extends ea.templatePath('layout') %}
+{% form_theme form with ea.crud.formThemes only %}
+
+{% block content_title %}
+    {%- apply spaceless -%}
+        Import depuis un CSV
+    {%- endapply -%}
+{% endblock %}
+
+
+{% block main %}
+    <div class="content-panel">
+        <div class="content-panel-body  with-background without-header without-footer">
+            {{ form(form) }}
+        </div>
+    </div>
+{% endblock %}
+
+{% trans_default_domain ea.i18n.translationDomain %}
+
+
+{% block body_javascript %}
+    {{ parent() }}
+    {{ include('@EasyAdmin/crud/includes/_select2_widget.html.twig') }}
+{% endblock %}
